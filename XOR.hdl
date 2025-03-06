@@ -1,0 +1,13 @@
+CHIP XOR{
+  IN a ,b 
+  OUT out ;
+  PARTS:
+  Not(a=a,out=nota);
+  Not(b=b, out=notb);
+  And(a=a, b=notb, out=aAndnotb);
+  And(a=nota,b=b,out=bAndnota);
+  Or(a=bAndnota, b=aAndnotb, out=out);
+  }
+
+  
+  
