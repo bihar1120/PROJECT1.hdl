@@ -1,14 +1,10 @@
-CHIP Or8Way {
-    IN in[8];  // 8-bit input
-    OUT out;   // 1-bit output
+CHIP MUX4WAY16{
+    IN a[16], b[16] , c[16] , d[16], sel[2] ;  // 8-bit input
+    OUT out[16];   // 1-bit output
 
     PARTS:
-    // Cascade OR gates to combine all 8 bits
-    Or(a=in[0], b=in[1], out=or01);
-    Or(a=or01, b=in[2], out=or02);
-    Or(a=or02, b=in[3], out=or03);
-    Or(a=or03, b=in[4], out=or04);
-    Or(a=or04, b=in[5], out=or05);
-    Or(a=or05, b=in[6], out=or06);
-    Or(a=or06, b=in[7], out=out);
+     Mux16(a=a, b=b, sel=sel[0], out=ab);
+     Mux16(a=c, b=d, sel=sel[0], out=cd);
+     Mux16(a=ab, b=cd, sel=sel[1], out=out);
+
 }
