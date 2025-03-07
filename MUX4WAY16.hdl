@@ -1,7 +1,6 @@
 CHIP MUX4WAY16{
     IN a[16], b[16] , c[16] , d[16], sel[2] ;  // 8-bit input
     OUT out[16];   // 1-bit output
-
     PARTS:
      Mux16(a=a, b=b, sel=sel[0], out=ab);
      Mux16(a=c, b=d, sel=sel[0], out=cd);
